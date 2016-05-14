@@ -1,0 +1,9 @@
+.tool {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+}
+.center-flex {
+  display: flex;
+  justify-content: center;
+}

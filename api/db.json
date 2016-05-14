@@ -1,0 +1,40 @@
+{
+  "companies": [
+    {
+      "name": "Java-Companies",
+      "owner": "Fabian",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "name": "Prototype-Company",
+      "owner": "Jonas"
+    },
+    {
+      "id": 3,
+      "name": "Plenigo-Company",
+      "owner": "Max"
+    },
+    {
+      "id": 4,
+      "name": "Test-Company",
+      "owner": "Ricardo"
+    },
+    {
+      "id": 5,
+      "name": "Test-Company",
+      "owner": "Robert"
+    },
+    {
+      "id": 6,
+      "name": "Sell-Company",
+      "owner": "Sebastian"
+    }
+  ],
+  "overview": {
+    "users": 500,
+    "usersActive": 300,
+    "companies": 100,
+    "companiesActive": 95
+  }
+}
