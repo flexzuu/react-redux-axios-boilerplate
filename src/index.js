@@ -1,4 +1,5 @@
 require('./style/font-awesome/css/font-awesome.css');
+require('./style/animate.css');
 require('./style/bootstrap.css');
 require('./style/dashboard.css');
 require('./style/style.css');
