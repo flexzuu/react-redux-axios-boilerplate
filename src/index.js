@@ -1,7 +1,5 @@
-require('./style/font-awesome/css/font-awesome.css');
-require('./style/bootstrap.css');
-require('./style/dashboard.css');
-require('./style/style.css');
+require('font-awesome/css/font-awesome.css');
+require('./style/main.styl');
 
 import React from 'react';
 import { render } from 'react-dom';

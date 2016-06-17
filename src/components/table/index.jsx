@@ -21,7 +21,7 @@ function Table({
 }) {
   if (data.length > 0) {
     return (
-      <table className={`table ${className}`}>
+      <table className={className}>
         <Captation text={captation} />
         <TableHead headers={headers} />
         <TableBody data={data} row={children} />

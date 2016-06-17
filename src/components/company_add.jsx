@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import { reduxForm } from 'redux-form';
 import { toggleCreateCompany, addCompany } from '../actions/action_companies';
+import Container from './container';
+import Cell from './cell';
 
 const propTypes = {
   toggleCreateCompany: PropTypes.func.isRequired,
@@ -31,63 +33,56 @@ class CompanyAdd extends Component {
     this.props.toggleCreateCompany();
   }
 
+  validInputClass(toCheck) {
+    return `form-input form-element
+      ${toCheck.touched && toCheck.invalid
+      ? 'input-invalid' : 'input-valid'}`;
+  }
+
   render() {
     const { fields: { name, owner }, handleSubmit } = this.props;
     if (this.props.isActive) {
       return (
-        <div
-          style={this.style}
-          className="modal"
-          id="myModal"
-          tabIndex="-1"
-          role="dialog"
-          aria-labelledby="myModalLabel"
-          aria-hidden="true"
-        >
-          <div className="modal-dialog modal-lg" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <button
-                  type="button"
-                  className="close"
-                  onClick={this.toggleVisibility}
-                >
-                  <span aria-hidden="true">×</span>
-                </button>
-                <h4 className="modal-title" id="myModalLabel">
-                  Add Company
-                </h4>
-              </div>
-              <div className="modal-body">
-                <form onSubmit={handleSubmit(this.onSubmit)}>
-                  <div className={`form-group ${name.touched && name.invalid ? 'has-danger' : ''}`}>
-                    <label>Name</label>
-                    <input
-                      type="text"
-                      className="form-control" {...name}
-                      autoFocus="autofocus"
-                      tabIndex="1"
-                    />
-                    <div className="text-help">
-                      {name.touched ? name.error : ''}
-                    </div>
-                  </div>
-                  <div
-                    className={`form-group ${owner.touched && owner.invalid ? 'has-danger' : ''}`}
-                  >
-                    <label>Owner</label>
-                    <input
-                      type="text"
-                      className="form-control" {...owner}
-                      tabIndex="2"
-                    />
-                    <div className="text-help">
-                      {owner.touched ? owner.error : ''}
-                    </div>
-                  </div>
-                  <button type="submit" className="btn btn-primary" tabIndex="3">Add</button>
-                </form>
-              </div>
+        <div>
+          <div className="overlay" />
+          <div className='modal'>
+            <div className='modal-head cf'>
+              <h3 className='modal-title'>Add Company</h3>
+              <button
+                onClick={this.toggleVisibility}
+                className='modal-close button button-unstyled'
+              >×</button>
+            </div>
+            <div className='modal-body'>
+              <form id="companyAddForm" onSubmit={handleSubmit(this.onSubmit)}>
+                <div className="form-element">
+                  <label htmlFor="name">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="Name"
+                    className={this.validInputClass(name)}
+                    required
+                    {...name}
+                  />
+                </div>
+                <div className="form-element">
+                  <label htmlFor="owner">
+                    Owner
+                  </label>
+                  <input
+                    type="text"
+                    id="owner"
+                    placeholder="Owner"
+                    className={this.validInputClass(owner)}
+                    required
+                    {...owner}
+                  />
+                </div>
+              </form>
+            </div>
+            <div className='modal-footer'>
+              <button type="submit" className='button' form="companyAddForm">Add</button>
             </div>
           </div>
         </div>
