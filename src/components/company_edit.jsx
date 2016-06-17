@@ -43,7 +43,12 @@ class CompanyEdit extends Component {
     const { fields: { name, owner }, handleSubmit } = this.props;
 
     return (
-      <form onSubmit={handleSubmit(this.onSubmit)}>
+      <form
+        onSubmit={handleSubmit(this.onSubmit)}
+        style={{
+          marginTop: '-15px',
+        }}
+      >
         <fieldset>
           <legend>
             Edit Company Info
