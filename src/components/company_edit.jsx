@@ -4,7 +4,8 @@ import {
   updateCompany,
   deleteCompany,
 } from '../actions/action_companies';
-
+import Container from './container';
+import Cell from './cell';
 const propTypes = {
   updateCompany: PropTypes.func.isRequired,
   deleteCompany: PropTypes.func.isRequired,
@@ -32,60 +33,68 @@ class CompanyEdit extends Component {
     this.props.deleteCompany(id);
   }
 
-  tabIndexHelper(index) {
-    const { isActive } = this.props;
-    if (isActive) {
-      return -1;
-    }
-    return index;
+  validInputClass(toCheck) {
+    return `form-input form-element
+      ${toCheck.touched && toCheck.invalid
+      ? 'input-invalid' : 'input-valid'}`;
   }
 
   render() {
     const { fields: { name, owner }, handleSubmit } = this.props;
 
     return (
-      <div className="card-block">
-        <form onSubmit={handleSubmit(this.onSubmit)}>
-          <div className={`form-group ${name.touched && name.invalid ? 'has-danger' : ''}`}>
-            <label>Name</label>
+      <form onSubmit={handleSubmit(this.onSubmit)}>
+        <fieldset>
+          <legend>
+            Edit Company Info
+          </legend>
+          <div className="form-element">
+            <label htmlFor="name">Name</label>
             <input
               type="text"
-              className="form-control" {...name}
-              tabIndex={this.tabIndexHelper(3)}
+              id="name"
+              placeholder="Name"
+              className={this.validInputClass(name)}
+              required
+              {...name}
             />
-            <div className="text-help">
-              {name.touched ? name.error : ''}
-            </div>
           </div>
-          <div className={`form-group ${owner.touched && owner.invalid ? 'has-danger' : ''}`}>
-            <label>Owner</label>
+          <div className="form-element">
+            <label htmlFor="owner">
+              Owner
+            </label>
             <input
               type="text"
-              className="form-control"
+              id="owner"
+              placeholder="Owner"
+              className={this.validInputClass(owner)}
+              required
               {...owner}
-              tabIndex={this.tabIndexHelper(4)}
             />
-            <div className="text-help">
-              {owner.touched ? owner.error : ''}
-            </div>
           </div>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            tabIndex={this.tabIndexHelper(5)}
-          >
-            Update
-          </button>
-          <button
-            type="button"
-            onClick={this.handleDelete}
-            className="btn btn-danger m-l-1"
-            tabIndex={this.tabIndexHelper(6)}
-          >
-            Delete
-          </button>
-        </form>
-      </div>
+          <Container>
+            <Cell>
+              <button
+                style={{ width: '100%' }}
+                type="submit"
+                className="button button-primary"
+              >
+                Update
+              </button>
+            </Cell>
+            <Cell>
+              <button
+                style={{ width: '100%' }}
+                type="button"
+                onClick={this.handleDelete}
+                className="button button-warn"
+              >
+                Delete
+              </button>
+            </Cell>
+          </Container>
+        </fieldset>
+      </form>
     );
   }
 }

@@ -16,7 +16,7 @@ function Companies({ companies, companyClickHandler, activeCompany }) {
       <Table
         data={data}
         headers={['ID', 'Name', 'Owner']}
-        className="table-hover"
+        className="table-with-hover"
       >
         <Company activeCompany={activeCompany} clickHandler={companyClickHandler} />
       </Table>

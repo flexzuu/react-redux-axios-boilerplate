@@ -6,6 +6,8 @@ import CompanyEdit from '../components/company_edit';
 import CompanyAdd from '../components/company_add';
 import DocumentTitle from 'react-document-title';
 import Card from '../components/card';
+import Container from '../components/container';
+import Cell from '../components/cell';
 
 const propTypes = {
   companies: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -82,46 +84,41 @@ class CompaniesPage extends Component {
       <DocumentTitle title="Company">
         <div>
           <CompanyAdd />
-          <div className="row">
-            <div className="col-sm-6">
-              <Card
-                title="Companies"
-                tools={
-                  <p>
-                    <button
-                      onClick={this.toggleCreateCompany}
-                      className="btn btn-sm btn-primary"
-                      tabIndex={this.tabIndexHelper(2)}
-                      type="button"
-                    >
-                      <i className="fa fa-plus" />
-                    </button>
-                    <button
-                      className="btn btn-sm btn-secondary m-l-1"
-                      onClick={this.refreshCompanies}
-                      tabIndex={this.tabIndexHelper(1)}
-                      type="button"
-                    >
-                      <i className="fa fa-refresh" />
-                    </button>
-                  </p>
-                }
-              >
-                <Companies
-                  companies={this.props.companies}
-                  companyClickHandler={this.companyClickHandler}
-                  activeCompany={this.props.current}
-                />
-              </Card>
-            </div>
-            <div className="col-sm-6">
-              <Card
-                title="Edit Companies"
-              >
-                {this.renderEditInsert()}
-              </Card>
-            </div>
-          </div>
+          <Container>
+            <Card
+              title="Companies"
+              tools={
+                <span>
+                  <button
+                    onClick={this.toggleCreateCompany}
+                    className="button button-approve button button-small"
+                    tabIndex={this.tabIndexHelper(2)}
+                    type="button"
+                  >
+                    <i className="fa fa-plus" />
+                  </button>
+                  <button
+                    style={{ marginLeft: '5px' }}
+                    className="button button-neutral button-small"
+                    onClick={this.refreshCompanies}
+                    tabIndex={this.tabIndexHelper(1)}
+                    type="button"
+                  >
+                    <i className="fa fa-refresh" />
+                  </button>
+                </span>
+              }
+            >
+              <Companies
+                companies={this.props.companies}
+                companyClickHandler={this.companyClickHandler}
+                activeCompany={this.props.current}
+              />
+          </Card>
+            <Cell>
+              {this.renderEditInsert()}
+            </Cell>
+          </Container>
         </div>
       </DocumentTitle>
     );

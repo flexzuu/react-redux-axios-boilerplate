@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Cell from './cell';
 
 const propTypes = {
   title: PropTypes.string.isRequired,
@@ -8,18 +9,19 @@ const propTypes = {
 
 function Card({ title, children, tools }) {
   return (
-
-    <div className="card">
-      <div className="card-block">
-        <h4 className="card-title">
-          {title}
-        </h4>
-        <div className="tool">{tools}</div>
+    <Cell>
+      <div className="card">
+        <div>
+          <h4>
+            {title}
+          </h4>
+          <div className="tool">{tools}</div>
+        </div>
+        <div>
+          {children}
+        </div>
       </div>
-      <div className="card-block">
-        {children}
-      </div>
-    </div>
+    </Cell>
   );
 }
 

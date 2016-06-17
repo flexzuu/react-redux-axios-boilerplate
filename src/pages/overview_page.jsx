@@ -6,6 +6,7 @@ import DocumentTitle from 'react-document-title';
 import Logger from '../utils/logger';
 import { percent } from '../utils/formatting';
 import Card from '../components/card';
+import Container from '../components/container';
 
 const propTypes = {
   overview: PropTypes.object,
@@ -73,44 +74,36 @@ class OverviewPage extends Component {
       <DocumentTitle title="Overview">
         <div>
           <h1 className="page-header">Dashboard</h1>
-          <div className="row">
-            <div className="col-xs-6 col-sm-6">
-              <Card
-                title="Users"
-                tools={
-                  <p>
-                    <button
-                      className="btn btn-sm btn-circle btn-secondary"
-                      onClick={this.refresh}
-                      type="button"
-                    >
-                      <i className="fa fa-refresh" />
-                    </button>
-                  </p>
-                }
-              >
-                Active users: {percent(overview.usersActive, overview.users, 2)}
-              </Card>
-            </div>
-            <div className="col-xs-6 col-sm-6">
-              <Card
-                title="Users"
-                tools={
-                  <p>
-                    <button
-                      className="btn btn-sm btn-circle btn-secondary"
-                      onClick={this.refresh}
-                      type="button"
-                    >
-                      <i className="fa fa-refresh" />
-                    </button>
-                  </p>
-                }
-              >
-              Active companies: {percent(overview.companiesActive, overview.companies, 2)}
-              </Card>
-            </div>
-          </div>
+          <Container>
+            <Card
+              title="Users"
+              tools={
+                <button
+                  className="button button-neutral"
+                  onClick={this.refresh}
+                  type="button"
+                >
+                  <i className="fa fa-refresh" />
+                </button>
+              }
+            >
+              Active users: {percent(overview.usersActive, overview.users, 2)}
+            </Card>
+            <Card
+              title="Users"
+              tools={
+                <button
+                  className="button button-neutral"
+                  onClick={this.refresh}
+                  type="button"
+                >
+                  <i className="fa fa-refresh" />
+                </button>
+              }
+            >
+            Active companies: {percent(overview.companiesActive, overview.companies, 2)}
+            </Card>
+          </Container>
         </div>
       </DocumentTitle>
     );

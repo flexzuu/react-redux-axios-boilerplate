@@ -2,8 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import DocumentTitle from 'react-document-title';
 import { connect } from 'react-redux';
 import LoginPage from './login_page';
-import NavigationBar from '../components/navigation_bar';
-import Sidebar from '../components/sidebar';
+import Navigation from '../components/navigation';
 
 const propTypes = {
   children: PropTypes.node.isRequired,
@@ -14,14 +13,9 @@ class PageContainer extends Component {
     if (this.props.isLoggedIn) {
       return (
         <div>
-          <NavigationBar />
-          <div className="container-fluid">
-            <div className="row">
-              <Sidebar />
-              <div className="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                {this.props.children}
-              </div>
-            </div>
+          <Navigation />
+          <div className="container">
+            {this.props.children}
           </div>
         </div>
       );

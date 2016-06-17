@@ -22,48 +22,50 @@ class LoginPage extends Component {
   }
 
   validInputClass(toCheck) {
-    return `form-group ${toCheck.touched && toCheck.invalid ? 'has-danger' : ''}`;
+    return `form-input form-element
+      ${toCheck.touched && toCheck.invalid
+      ? 'input-invalid' : 'input-valid'}`;
   }
 
   render() {
     const { fields: { email, password }, handleSubmit } = this.props;
     return (
       <DocumentTitle title="Login">
-        <div>
-          <h3>
-            Admin Dashboard
-          </h3>
-          <form
-            className="m-t"
-            role="form"
-            onSubmit={handleSubmit(this.login)}
-          >
-            <div className={this.validInputClass(email)}>
+        <form onSubmit={handleSubmit(this.login)}>
+          <fieldset>
+            <legend>
+              Login
+            </legend>
+            <div className="form-element">
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
-                className="form-control"
-                placeholder="Email"
+                id="email"
+                placeholder="Your email"
+                className={this.validInputClass(email)}
                 required
                 {...email}
               />
             </div>
-            <div className={this.validInputClass(password)}>
+            <div className="form-element">
+              <label htmlFor="password">
+                Password
+              </label>
               <input
                 type="password"
-                className="form-control"
-                placeholder="Password"
+                id="password"
+                placeholder="Your password"
+                className={this.validInputClass(password)}
                 required
                 {...password}
               />
             </div>
             <button
               type="submit"
-              className="btn btn-primary block full-width m-b"
-            >
-              Login
-            </button>
-          </form>
-        </div>
+              className="button button-primary"
+            >Login</button>
+          </fieldset>
+        </form>
       </DocumentTitle>
     );
   }
