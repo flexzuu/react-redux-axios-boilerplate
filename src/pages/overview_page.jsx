@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Doughnut } from 'react-chartjs';
 
 import { fetchOverview } from '../actions/action_overview';
 import DocumentTitle from 'react-document-title';
@@ -90,15 +89,6 @@ class OverviewPage extends Component {
                   </p>
                 }
               >
-                <Doughnut
-                  data={this.getChartData(
-                    overview.usersActive,
-                    overview.users,
-                    'active',
-                    'inactive'
-                  )}
-                  options={this.chartstyle}
-                />
                 Active users: {percent(overview.usersActive, overview.users, 2)}
               </Card>
             </div>
@@ -117,15 +107,6 @@ class OverviewPage extends Component {
                   </p>
                 }
               >
-                <Doughnut
-                  data={this.getChartData(
-                    overview.companiesActive,
-                    overview.companies,
-                    'active',
-                    'inactive'
-                  )}
-                  options={this.chartstyle}
-                />
               Active companies: {percent(overview.companiesActive, overview.companies, 2)}
               </Card>
             </div>
