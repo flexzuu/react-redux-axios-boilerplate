@@ -53,6 +53,6 @@
     "redux-promise-middleware": "^3.0.0",
     "yeticss": "^7.3.0",
     "redux-thunk": "^2.0.1",
-    "victory": "^0.8.0"
+    "victory": "^0.9.0"
   }
 }
