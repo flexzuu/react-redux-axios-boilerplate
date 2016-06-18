@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { connect } from 'react-redux';
 import Icon from 'react-fontawesome';
 import { logout } from '../actions/action_auth';
-import { Link } from 'react-router';
+import { Link, IndexLink } from 'react-router';
 
 const propTypes = {
   user: PropTypes.object.isRequired,
@@ -36,13 +36,13 @@ class Navigation extends Component {
             </button>
           </li>
           <li>
-            <Link to="/">Dashboard</Link>
+            <IndexLink to="/" activeClassName="active">Dashboard</IndexLink>
           </li>
           <li>
-            <Link to="companies">Companies</Link>
+            <Link to="companies" activeClassName="active">Companies</Link>
           </li>
           <li>
-            <Link to="graph">Graph</Link>
+            <Link to="graph" activeClassName="active">Graph</Link>
           </li>
         </ul>
       </nav>
